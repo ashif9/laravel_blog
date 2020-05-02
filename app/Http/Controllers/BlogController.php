@@ -9,8 +9,9 @@ class BlogController extends Controller
 {
     public function index(){
         $blogs = All_blogs::orderBy('id', 'DESC')->get();
+        $categories = All_blogs::select('category')->orderBy('category', 'ASC')->groupBy('category')->get();
         
-        return view('blogs.index', ['blogs'=>$blogs]);
+        return view('blogs.index', ['blogs'=>$blogs, 'categories'=>$categories]);
     }
     public function create(){
         return view('blogs.create');
@@ -31,5 +32,9 @@ class BlogController extends Controller
     }
     public function delete($id){
         echo $id;
+    }
+    public function fullBlog($id){
+        $blog = All_blogs::where('id', $id)->get();
+        return view('blogs.fullBlog', ['blog'=>$blog[0]]);
     }
 }

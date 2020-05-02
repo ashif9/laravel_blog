@@ -10,21 +10,19 @@
             <div class="card-body">
                 <h5 class="card-title">{{$blog->title}}</h5>
                 <p class="card-text">{{ Str::limit($blog->body, 200) }}</p>
-                <a href="#" class="btn btn-primary float-right">Read More</a>
+                <a href="/blogs/{{$blog->id}}" class="btn btn-primary float-right">Read More</a>
             </div>
         </div>
         @endforeach
     </div>
     <div class="col-md-3 col-lg-3">
         <h1>All Categories</h1>
-        <div class="card text-white bg-info mb-3">
+        <div class="card mb-3">
             <div class="card-header">Category</div>
             <div class="card-body">
-                <h5 class="card-title">Info card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <ul class="list-group">
-                    @foreach($blogs as $key => $blog)
-                        <li class="list-group-item" style="color:black">{{ $blog->category->unique() }}</li>
+                    @foreach($categories as $key => $category)
+                        <li class="list-group-item1 m-2" style="color:black; list-style-type:none">{{ $category->category }}</li>
                     @endforeach
                 </ul>
             </div>
